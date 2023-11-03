@@ -1,0 +1,2 @@
+[Sun Jul 23 14:46:42.457315 2023] [proxy_fcgi:error] [pid 1828530] [client 89.163.132.170:0] AH01071: Got error 'Primary script unknown', referer: https://frenkbit.ru/404.php?test=hello
+[Sun Jul 23 17:52:49.635468 2023] [proxy_fcgi:error] [pid 1828532] [client 103.145.50.195:0] AH01071: Got error 'Primary script unknown', referer: http://frenkbit.ru/wp-login.php

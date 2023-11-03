@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/
+      - ./_docker/nginx/conf.d/:/etc/nginx/conf.d/
+    container_name: nginx_app
+    depends_on:
+      - app
+
+  app:
+    build:
+      context: .
+      dockerfile: _docker/app/Dockerfile
+    volumes:
+      - ./:/var/www/
+    container_name: laravel_app
+    depends_on:
+      - db
+    ports:
+      - "5173:5173"
+
+  db:
+    image: postgres:latest
+    restart: always
+    volumes:
+      - ./tmp/db:/var/lib/pgsql
+    environment:
+      POSTGRES_DB: pgsql_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    container_name: postgres_app
