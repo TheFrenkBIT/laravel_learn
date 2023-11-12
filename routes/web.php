@@ -27,3 +27,14 @@ Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
     Route::patch('/posts/{post}', UpdateController::class)->name('post.update');
     Route::delete('/posts/{post}', DestroyController::class)->name('post.destroy');
 });
+Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {
+    Route::group(['namespace' => 'Post'], function () {
+        Route::get('/post', IndexController::class)->name('admin.post.index');
+        Route::get('/post/create', CreateController::class)->name('admin.post.create');
+        Route::post('/posts', StoreController::class)->name('admin.post.store');
+        Route::get('/posts/{post}/edit', EditController::class)->name('admin.post.edit');
+        Route::get('/posts/{post}', ShowController::class)->name('admin.post.show');
+        Route::patch('/posts/{post}', UpdateController::class)->name('admin.post.update');
+        Route::delete('/posts/{post}', DestroyController::class)->name('admin.post.destroy');
+    });
+});
