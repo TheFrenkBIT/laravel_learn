@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
+Route::redirect('/home', '/');
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
     Route::get('/find', [\App\Http\Controllers\PostController::class, 'index']);
@@ -27,7 +27,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
     Route::patch('/posts/{post}', UpdateController::class)->name('post.update');
     Route::delete('/posts/{post}', DestroyController::class)->name('post.destroy');
 });
-Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::group(['namespace' => 'Post'], function () {
         Route::get('/post', IndexController::class)->name('admin.post.index');
         Route::get('/post/create', CreateController::class)->name('admin.post.create');

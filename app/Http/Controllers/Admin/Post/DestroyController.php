@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Post\BaseController;
 use App\Models\Post;
 use Illuminate\Http\Request;
-
 class DestroyController extends BaseController
 {
     //
