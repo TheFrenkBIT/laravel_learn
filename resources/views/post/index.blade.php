@@ -10,6 +10,11 @@
 </head>
 <body>
     <div>
+        @can('view', auth()->user())
+            <div>
+                <a href="{{ route('admin.post.index') }}">Admin</a>
+            </div>
+        @endcan
         <div>
             <a href="{{ route('post.create') }}" class="btn btn-primary">Create</a>
         </div>

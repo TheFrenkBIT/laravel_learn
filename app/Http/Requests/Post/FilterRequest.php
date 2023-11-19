@@ -26,7 +26,9 @@ class FilterRequest extends FormRequest
             'count_of_posts' => 'integer',
             'description' => 'string',
             'category_id' => 'integer',
-            'tags' => 'array|nullable'
+            'tags' => 'array|nullable',
+            'page' => '',
+            'per_page' => ''
         ];
     }
 }
