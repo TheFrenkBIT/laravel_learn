@@ -12,10 +12,15 @@ class Post extends Model
     use SoftDeletes;
     use HasFactory;
     use Filterable;
-    protected $fillable = ['name', 'count_of_posts', 'description', 'category_id'];
+    protected $fillable = [
+        'name',
+        'count_of_posts',
+        'description',
+        'category_id'
+    ];
     public function category()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
     public function tags()
     {
